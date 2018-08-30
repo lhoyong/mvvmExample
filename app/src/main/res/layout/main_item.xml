@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/main_item_iv_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_item_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/main_item_iv_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="료오오칸" />
+
+    <TextView
+        android:id="@+id/main_item_tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@id/main_item_tv_name"
+        app:layout_constraintTop_toTopOf="@id/main_item_tv_name"
+        tools:text="리뷰평점 : 8" />
+
+    <TextView
+        android:id="@+id/main_item_tv_dailyRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/main_item_tv_name"
+        app:layout_constraintTop_toBottomOf="@id/main_item_tv_name"
+        tools:text="가격 : 106000" />
+
+    <TextView
+        android:id="@+id/main_item_tv_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/main_item_tv_dailyRate"
+        app:layout_constraintTop_toTopOf="@id/main_item_tv_dailyRate"
+        tools:text="11%" />
+
+    <TextView
+        android:id="@+id/main_item_tv_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/main_item_tv_dailyRate"
+        app:layout_constraintTop_toBottomOf="@id/main_item_tv_dailyRate"
+        tools:text="WIFI 제공" />
+
+    <TextView
+        android:id="@+id/main_item_tv_breakFast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@id/main_item_tv_wifi"
+        app:layout_constraintTop_toTopOf="@id/main_item_tv_wifi"
+        tools:text="아침 : 제공" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
