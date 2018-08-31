@@ -1,20 +1,27 @@
 package com.github.ihoyong.mvvmexample.adapter
 
-import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ihoyong.mvvmexample.R
+import com.github.ihoyong.mvvmexample.databinding.MainItemBinding
 import com.github.ihoyong.mvvmexample.model.AgodaItem
 import com.github.ihoyong.mvvmexample.viewholder.MainViewHolder
+import kotlinx.android.synthetic.main.main_item.view.*
 
-class MainAdapter(private val context: Context) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val mItem: MutableList<AgodaItem> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MainViewHolder(LayoutInflater.from(context).inflate(R.layout.main_item, parent, false), context)
+       // val binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.main_item, parent, false)
+
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding: MainItemBinding =
+                DataBindingUtil.inflate(layoutInflater, R.layout.main_item, parent, false)
+        return MainViewHolder(binding)
     }
 
     override fun getItemCount(): Int = mItem.size
