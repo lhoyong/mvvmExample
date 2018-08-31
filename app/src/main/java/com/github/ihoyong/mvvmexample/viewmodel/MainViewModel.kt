@@ -1,21 +1,28 @@
 package com.github.ihoyong.mvvmexample.viewmodel
 
+import android.util.Log
+import com.github.ihoyong.mvvmexample.R
 import com.github.ihoyong.mvvmexample.adapter.MainAdapter
 import com.github.ihoyong.mvvmexample.model.*
-import com.github.ihoyong.mvvmexample.network.Api
 import com.github.ihoyong.mvvmexample.repository.Repository
+import com.github.ihoyong.mvvmexample.utils.ResourceProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
-import org.json.JSONObject
 
-class MainViewModel(private val repository: Repository) : BaseViewModel() {
+class MainViewModel(private val repository: Repository, private val resourceProvider: ResourceProvider) : BaseViewModel() {
 
-    fun getAgodaList(auth: String, adapter: MainAdapter) {
+    val mainAdapter: MainAdapter = MainAdapter()
 
-        addDisposable(repository.getAgodaList(auth, getAgodaRequest())
+    init {
+        getAgodaList()
+    }
+
+    fun getAgodaList() {
+
+        addDisposable(repository.getAgodaList(resourceProvider.getString(R.string.auth), getAgodaRequest())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    adapter.addItems(it)
-                    adapter.notifyChanged()
+                    mainAdapter.addItems(it)
+                    mainAdapter.notifyChanged()
                 }, {})
 
         )
@@ -34,6 +41,8 @@ class MainViewModel(private val repository: Repository) : BaseViewModel() {
         val criteria = criteria("2018-10-28", "2018-10-29", 106058, additional)
 
         return AgodaRequest(criteria)
+
+
     }
 
 
