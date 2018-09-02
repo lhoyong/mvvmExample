@@ -1,4 +1,4 @@
-package com.github.ihoyong.mvvmexample.model
+package com.github.ihoyong.mvvmexample.domain.model
 
 data class AgodaRequest(val criteria: criteria)
 

@@ -1,4 +1,4 @@
-package com.github.ihoyong.mvvmexample.viewmodel
+package com.github.ihoyong.mvvmexample.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

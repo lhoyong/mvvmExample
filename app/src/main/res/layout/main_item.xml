@@ -9,7 +9,7 @@
 
         <variable
             name="mainItemViewModel"
-            type="com.github.ihoyong.mvvmexample.viewmodel.MainItemViewModel" />
+            type="com.github.ihoyong.mvvmexample.ui.viewmodel.MainItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/white"
+        android:onClick="@{() -> mainItemViewModel.showDetail()}"
         android:orientation="vertical">
 
         <ImageView

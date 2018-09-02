@@ -1,7 +1,7 @@
 package com.github.ihoyong.mvvmexample.network
 
-import com.github.ihoyong.mvvmexample.model.AgodaItem
-import com.github.ihoyong.mvvmexample.model.AgodaRequest
+import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
+import com.github.ihoyong.mvvmexample.domain.model.AgodaRequest
 import com.google.gson.annotations.SerializedName
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers

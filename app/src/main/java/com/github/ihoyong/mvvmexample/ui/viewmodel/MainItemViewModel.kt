@@ -1,8 +1,12 @@
-package com.github.ihoyong.mvvmexample.viewmodel
+package com.github.ihoyong.mvvmexample.ui.viewmodel
 
+import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.github.ihoyong.mvvmexample.model.AgodaItem
+import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
+import com.github.ihoyong.mvvmexample.ui.view.DetailActivity
+import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
 
 class MainItemViewModel : BaseViewModel() {
 
@@ -13,6 +17,7 @@ class MainItemViewModel : BaseViewModel() {
     private val wifi = MutableLiveData<String>()
     private val breakFast = MutableLiveData<String>()
     private val imageUrl = MutableLiveData<String>()
+    private val clickEvent = SingleLiveEvent<Any>()
 
     fun bind(agoda: AgodaItem) {
         name.value = agoda.name
@@ -22,6 +27,7 @@ class MainItemViewModel : BaseViewModel() {
         wifi.value = convertWifi(agoda.wifi)
         breakFast.value = convertBreakFast(agoda.breakfast)
         imageUrl.value = agoda.imageUrl
+
     }
 
     fun getName(): MutableLiveData<String> {
@@ -52,19 +58,25 @@ class MainItemViewModel : BaseViewModel() {
         return imageUrl
     }
 
-    fun convertWifi(wifi: Boolean): String {
-        if (wifi) {
-            return "와이파이 : 제공"
+    private fun convertWifi(wifi: Boolean): String {
+        return if (wifi) {
+            "와이파이 : 제공"
         } else {
-            return "와이파이 : 미제공"
+            "와이파이 : 미제공"
         }
     }
 
-    fun convertBreakFast(bf: Boolean): String {
-        if (bf) {
-            return "아침 : 제공"
+    private fun convertBreakFast(bf: Boolean): String {
+        return if (bf) {
+            "아침 : 제공"
         } else {
-            return "아침 : 미제공"
+            "아침 : 미제공"
         }
     }
+
+    fun showDetail() {
+        clickEvent.call()
+    }
+
+
 }

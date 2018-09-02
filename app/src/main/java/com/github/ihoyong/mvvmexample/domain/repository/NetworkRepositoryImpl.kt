@@ -1,10 +1,9 @@
-package com.github.ihoyong.mvvmexample.repository
+package com.github.ihoyong.mvvmexample.domain.repository
 
-import com.github.ihoyong.mvvmexample.model.AgodaItem
-import com.github.ihoyong.mvvmexample.model.AgodaRequest
+import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
+import com.github.ihoyong.mvvmexample.domain.model.AgodaRequest
 import com.github.ihoyong.mvvmexample.network.Api
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class NetworkRepositoryImpl(private val api: Api) : Repository {
 
