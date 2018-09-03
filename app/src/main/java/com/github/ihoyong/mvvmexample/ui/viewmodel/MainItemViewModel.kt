@@ -1,12 +1,9 @@
 package com.github.ihoyong.mvvmexample.ui.viewmodel
 
-import android.content.Intent
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
-import com.github.ihoyong.mvvmexample.ui.view.DetailActivity
 import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
+import com.github.ihoyong.mvvmexample.utils.StringUtils
 
 class MainItemViewModel : BaseViewModel() {
 
@@ -24,8 +21,8 @@ class MainItemViewModel : BaseViewModel() {
         score.value = "평점- " + agoda.score.toString()
         dailyRate.value = agoda.dailyRate.toString() + " 달러"
         discount.value = agoda.discountPrecent.toString() + " %"
-        wifi.value = convertWifi(agoda.wifi)
-        breakFast.value = convertBreakFast(agoda.breakfast)
+        wifi.value = StringUtils.convertWifi(agoda.wifi)
+        breakFast.value = StringUtils.convertBreakFast(agoda.breakfast)
         imageUrl.value = agoda.imageUrl
 
     }
@@ -56,22 +53,6 @@ class MainItemViewModel : BaseViewModel() {
 
     fun getImageUrl(): MutableLiveData<String> {
         return imageUrl
-    }
-
-    private fun convertWifi(wifi: Boolean): String {
-        return if (wifi) {
-            "와이파이 : 제공"
-        } else {
-            "와이파이 : 미제공"
-        }
-    }
-
-    private fun convertBreakFast(bf: Boolean): String {
-        return if (bf) {
-            "아침 : 제공"
-        } else {
-            "아침 : 미제공"
-        }
     }
 
     fun showDetail() {

@@ -17,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/white"
-        android:onClick="@{() -> mainItemViewModel.showDetail()}"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:clickEvent="@{() -> mainItemViewModel.showDetail()}">
 
         <ImageView
             android:id="@+id/main_item_iv_imageUrl"
