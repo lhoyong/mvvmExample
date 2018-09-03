@@ -9,7 +9,7 @@
 
         <variable
             name="mainItemViewModel"
-            type="com.github.ihoyong.mvvmexample.viewmodel.MainItemViewModel" />
+            type="com.github.ihoyong.mvvmexample.ui.viewmodel.MainItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:mainItemClick="@{mainItemViewModel.clickEvent}">
 
         <ImageView
             android:id="@+id/main_item_iv_imageUrl"
@@ -81,16 +82,42 @@
             tools:text="11%" />
 
         <TextView
-            android:id="@+id/main_item_tv_wifi"
+            android:id="@+id/main_item_tv_wifi_layer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="WIFI"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/main_item_tv_dailyRate"
+            app:layout_constraintTop_toBottomOf="@id/main_item_tv_dailyRate" />
+
+        <TextView
+            android:id="@+id/main_item_tv_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="@{mainItemViewModel.wifi}"
             android:textColor="@color/black"
             android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="@id/main_item_tv_dailyRate"
-            app:layout_constraintTop_toBottomOf="@id/main_item_tv_dailyRate"
-            tools:text="WIFI 제공" />
+            app:layout_constraintBottom_toBottomOf="@id/main_item_tv_wifi_layer"
+            app:layout_constraintStart_toEndOf="@id/main_item_tv_wifi_layer"
+            app:layout_constraintTop_toTopOf="@id/main_item_tv_wifi_layer"
+            tools:text="제공" />
+
+        <TextView
+            android:id="@+id/main_item_tv_breakFast_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="아침"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/main_item_tv_wifi"
+            app:layout_constraintStart_toEndOf="@id/main_item_tv_wifi"
+            app:layout_constraintTop_toTopOf="@id/main_item_tv_wifi" />
 
         <TextView
             android:id="@+id/main_item_tv_breakFast"
@@ -100,9 +127,10 @@
             android:text="@{mainItemViewModel.breakFast}"
             android:textColor="@color/black"
             android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/main_item_tv_wifi"
-            app:layout_constraintTop_toTopOf="@id/main_item_tv_wifi"
-            tools:text="아침 : 제공" />
+            app:layout_constraintBottom_toBottomOf="@id/main_item_tv_breakFast_layer"
+            app:layout_constraintStart_toEndOf="@id/main_item_tv_breakFast_layer"
+            app:layout_constraintTop_toTopOf="@id/main_item_tv_breakFast_layer"
+            tools:text="제공" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

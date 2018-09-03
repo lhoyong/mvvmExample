@@ -1,7 +1,8 @@
 package com.github.ihoyong.mvvmexample.network
 
-import com.github.ihoyong.mvvmexample.model.AgodaItem
-import com.github.ihoyong.mvvmexample.model.AgodaRequest
+import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
+import com.github.ihoyong.mvvmexample.domain.model.AgodaRequest
+import com.github.ihoyong.mvvmexample.domain.model.HotelRequest
 import com.google.gson.annotations.SerializedName
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -22,6 +23,13 @@ interface Api {
     @POST("affiliateservice/lt_v1")
     fun agoda(@Header("Authorization") header: String,
               @Body request: AgodaRequest): Single<AgodaResult>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("affiliateservice/lt_v1")
+    fun hotel(@Header("Authorization") header: String,
+              @Body request: HotelRequest): Single<AgodaResult>
+
 
     data class AgodaResult(@SerializedName("results") val agoda: MutableList<AgodaItem>)
 

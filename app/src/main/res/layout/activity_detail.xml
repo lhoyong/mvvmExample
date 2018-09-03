@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.github.ihoyong.mvvmexample.ui.viewmodel.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.DetailActivity">
+
+        <ImageView
+            android:id="@+id/detail_iv_imageUrl"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{viewModel.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@color/black" />
+
+        <TextView
+            android:id="@+id/detail_tv_title_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="숙소명"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_iv_imageUrl" />
+
+        <TextView
+            android:id="@+id/detail_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_title_layer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_title_layer"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_title_layer"
+            app:mutableText="@{viewModel.title}"
+            tools:text="Hotels" />
+
+        <TextView
+            android:id="@+id/detail_tv_dailyRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/textColor"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_title_layer"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_title_layer"
+            app:mutableText="@{viewModel.dailyRate}"
+            tools:text="12333,330원" />
+
+        <TextView
+            android:id="@+id/detail_tv_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/red"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_dailyRate"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_dailyRate"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_dailyRate"
+            app:mutableText="@{viewModel.disCount}"
+            tools:text="33%" />
+
+        <TextView
+            android:id="@+id/detail_tv_breakFast_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="아침식사"
+            android:textColor="@color/textColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_dailyRate"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_dailyRate" />
+
+        <TextView
+            android:id="@+id/detail_tv_breakFast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/textColor"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_breakFast_layer"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_breakFast_layer"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_breakFast_layer"
+            app:mutableText="@{viewModel.breakFast}"
+            tools:text="제공" />
+
+        <TextView
+            android:id="@+id/detail_tv_wifi_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="WIFI"
+            android:textColor="@color/textColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_breakFast"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_breakFast"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_breakFast" />
+
+        <TextView
+            android:id="@+id/detail_tv_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/textColor"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_wifi_layer"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_wifi_layer"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_wifi_layer"
+            app:mutableText="@{viewModel.wifi}"
+            tools:text="on" />
+
+        <ProgressBar
+            android:id="@+id/detail_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{viewModel.progressBar}"
+            tools:visibility="gone" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

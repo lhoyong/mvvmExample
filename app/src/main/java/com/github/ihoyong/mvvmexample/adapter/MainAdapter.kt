@@ -1,22 +1,19 @@
 package com.github.ihoyong.mvvmexample.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ihoyong.mvvmexample.R
 import com.github.ihoyong.mvvmexample.databinding.MainItemBinding
-import com.github.ihoyong.mvvmexample.model.AgodaItem
-import com.github.ihoyong.mvvmexample.viewholder.MainViewHolder
-import kotlinx.android.synthetic.main.main_item.view.*
+import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
+import com.github.ihoyong.mvvmexample.ui.viewmodel.MainItemViewModel
 
 class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val mItem: MutableList<AgodaItem> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       // val binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.main_item, parent, false)
 
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: MainItemBinding =
@@ -28,6 +25,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MainViewHolder).bind(mItem[position])
+
     }
 
     fun addItems(items: MutableList<AgodaItem>) {
@@ -36,5 +34,16 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun notifyChanged() {
         notifyDataSetChanged()
+    }
+}
+
+class MainViewHolder(private val binding: MainItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    private val mainItemViewModel = MainItemViewModel()
+
+    fun bind(agoda: AgodaItem) {
+        mainItemViewModel.bind(agoda)
+
+        binding.mainItemViewModel = mainItemViewModel
     }
 }

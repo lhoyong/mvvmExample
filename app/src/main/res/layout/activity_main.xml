@@ -9,13 +9,13 @@
 
         <variable
             name="mainViewModel"
-            type="com.github.ihoyong.mvvmexample.viewmodel.MainViewModel" />
+            type="com.github.ihoyong.mvvmexample.ui.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.MainActivity">
+        tools:context=".ui.view.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_recycler_view"
