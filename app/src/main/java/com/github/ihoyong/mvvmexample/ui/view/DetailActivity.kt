@@ -28,11 +28,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModelFactory = DetailViewModelFactory(repository, resourceProvider)
+        viewModelFactory = DetailViewModelFactory(repository, resourceProvider, getHotelId)
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
-
-        Log.e("getH", "$getHotelId")
 
         viewModel.error.observe(this, Observer { value ->
             if (value == 0) Toast.makeText(this, "정보를 불러올 수 없습니다. 다시 시도하세요.", Toast.LENGTH_SHORT).show()

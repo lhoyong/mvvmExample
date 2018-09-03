@@ -11,7 +11,10 @@ import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
 import com.github.ihoyong.mvvmexample.utils.StringUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 
-class DetailViewModel(private val repository: DetailRepository, private val resourceProvider: ResourceProvider) : BaseViewModel() {
+class DetailViewModel(private val repository: DetailRepository,
+                      private val resourceProvider: ResourceProvider,
+                      private val hotelId: Int?)
+    : BaseViewModel() {
 
     private val imageUrl = MutableLiveData<String>()
     private val title = MutableLiveData<String>()
@@ -70,7 +73,7 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
         val occupancy = Occupancy(2)
         val additional = DetailAdditional("KRW", false, "ko-kr", occupancy)
 
-        val criteria = DetailCriteria("2018-10-28", "2018-10-29", intArrayOf(266523), additional)
+        val criteria = DetailCriteria("2018-10-28", "2018-10-29", intArrayOf(hotelId!!), additional)
 
         return HotelRequest(criteria)
     }
