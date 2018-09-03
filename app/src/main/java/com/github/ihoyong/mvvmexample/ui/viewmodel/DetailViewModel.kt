@@ -7,6 +7,7 @@ import com.github.ihoyong.mvvmexample.R
 import com.github.ihoyong.mvvmexample.domain.model.*
 import com.github.ihoyong.mvvmexample.domain.repository.DetailRepository
 import com.github.ihoyong.mvvmexample.utils.ResourceProvider
+import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
 import com.github.ihoyong.mvvmexample.utils.StringUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 
@@ -19,6 +20,9 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
     private val progressBar = MutableLiveData<Int>()
     private val breakFast = MutableLiveData<String>()
     private val wifi = MutableLiveData<String>()
+    private val _error = SingleLiveEvent<Int>()
+
+    val error: LiveData<Int> get() = _error
 
     init {
         getHotelData()
@@ -57,6 +61,7 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
     }
 
     private fun errorUI() {
+        _error.value = 0
         progressBar.value = View.GONE
     }
 

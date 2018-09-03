@@ -1,6 +1,8 @@
 package com.github.ihoyong.mvvmexample.ui.view
 
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.github.ihoyong.mvvmexample.R
 import com.github.ihoyong.mvvmexample.databinding.ActivityDetailBinding
@@ -27,6 +29,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
 
+        viewModel.error.observe(this, Observer { value ->
+            if (value == 0) Toast.makeText(this, "정보를 불러올 수 없습니다. 다시 시도하세요.", Toast.LENGTH_SHORT).show()
+        })
         viewDataBinding.viewModel = viewModel
         viewDataBinding.setLifecycleOwner(this)
     }
