@@ -1,21 +1,33 @@
 package com.github.ihoyong.mvvmexample.domain.model
 
-data class AgodaRequest(val criteria: criteria)
+import com.google.gson.annotations.SerializedName
 
-data class criteria(val checkInDate: String,
+data class AgodaRequest(@SerializedName("criteria") val criteria: Criteria)
+data class HotelRequest(@SerializedName("criteria") val criteria: DetailCriteria)
+
+data class Criteria(val checkInDate: String,
                     val checkOutDate: String,
                     val cityId: Int,
-                    val additional: additional)
+                    @SerializedName("additional") val additional: Additional)
 
-data class dailyRate(val maximum: Int, val minimum: Int)
+data class DailyRate(val maximum: Int, val minimum: Int)
 
-data class occupancy(val numberOfAdult: Int)
+data class Occupancy(val numberOfAdult: Int)
 
-data class additional(val currency: String,
+data class Additional(val currency: String,
                       val discountOnly: Boolean,
                       val language: String,
                       val maxResult: Int,
                       val sortBy: String,
-                      val occupancy: occupancy,
-                      val dailyRate: dailyRate)
+                      @SerializedName("occupancy") val occupancy: Occupancy,
+                      @SerializedName("dailyRate") val dailyRate: DailyRate)
 
+data class DetailCriteria(val checkInDate: String,
+                          val checkOutDate: String,
+                          val hotelId: IntArray,
+                          @SerializedName("additional") val additional: DetailAdditional)
+
+data class DetailAdditional(val currency: String,
+                            val discountOnly: Boolean,
+                            val language: String,
+                            @SerializedName("occupancy") val occupancy: Occupancy)
