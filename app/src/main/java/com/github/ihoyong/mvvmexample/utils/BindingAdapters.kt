@@ -4,7 +4,10 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.ihoyong.mvvmexample.ui.view.DetailActivity
@@ -16,14 +19,20 @@ fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
 }
 
 @BindingAdapter("imageUrl")
-fun loadImage(imageView: ImageView, imageUrl: String) {
+fun loadImage(imageView: ImageView, imageUrl: String?) {
+
     Glide.with(imageView.context)
             .load(imageUrl)
             .into(imageView)
 }
 
+@BindingAdapter("mutableText")
+fun setMutableText(view: TextView, text: String?) {
+    view.text = text
+}
+
 // TODO adapter? 에서 클릭이벤트 이렇게 하면안되는대 하는방법을 모르겟..
-@BindingAdapter("android:onClick")
+@BindingAdapter("clickEvent")
 fun setOnClickListener(view: View, runnable: Runnable) {
     view.setOnClickListener {
         view.context.startActivity(Intent(view.context, DetailActivity::class.java))

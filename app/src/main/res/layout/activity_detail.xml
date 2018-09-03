@@ -17,6 +17,57 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.DetailActivity">
 
+        <ImageView
+            android:id="@+id/detail_iv_imageUrl"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{detailViewModel.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/black" />
+
+        <TextView
+            android:id="@+id/detail_tv_title_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="숙소명"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_iv_imageUrl" />
+
+        <TextView
+            android:id="@+id/detail_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_tv_title_layer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/detail_tv_title_layer"
+            app:layout_constraintTop_toTopOf="@id/detail_tv_title_layer"
+            app:mutableText="@{detailViewModel.title}"
+            tools:text="Hotels" />
+
+        <TextView
+            android:id="@+id/detail_tv_dailyRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/textColor"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_title_layer"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_title_layer"
+            app:mutableText="@{detailViewModel.dailyRate}"
+            tools:text="12333,330" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
