@@ -27,7 +27,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
 
-        viewDataBinding.detailViewModel = viewModel
+        viewDataBinding.viewModel = viewModel
         viewDataBinding.setLifecycleOwner(this)
     }
 }

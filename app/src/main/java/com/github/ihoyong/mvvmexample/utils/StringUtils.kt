@@ -17,4 +17,12 @@ object StringUtils {
             "아침 : 미제공"
         }
     }
+
+    fun convertDailyRate(rate: Double): String {
+        return "${rate}원"
+    }
+
+    fun convertDiscount(percent: Int): String {
+        return "$percent%"
+    }
 }
