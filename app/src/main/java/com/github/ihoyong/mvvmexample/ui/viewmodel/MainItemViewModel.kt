@@ -1,9 +1,14 @@
 package com.github.ihoyong.mvvmexample.ui.viewmodel
 
+import android.util.Log
+import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.github.ihoyong.mvvmexample.domain.model.AgodaItem
 import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
 import com.github.ihoyong.mvvmexample.utils.StringUtils
+import io.reactivex.Single
 
 class MainItemViewModel : BaseViewModel() {
 
@@ -14,7 +19,9 @@ class MainItemViewModel : BaseViewModel() {
     private val wifi = MutableLiveData<String>()
     private val breakFast = MutableLiveData<String>()
     private val imageUrl = MutableLiveData<String>()
-    private val clickEvent = SingleLiveEvent<Any>()
+    private val _clickEvent = SingleLiveEvent<Int>()
+
+    val clickEvent: LiveData<Int> get() = _clickEvent
 
     fun bind(agoda: AgodaItem) {
         name.value = agoda.name
@@ -25,39 +32,21 @@ class MainItemViewModel : BaseViewModel() {
         breakFast.value = StringUtils.convertBreakFast(agoda.breakfast)
         imageUrl.value = agoda.imageUrl
 
+        _clickEvent.value = agoda.id
     }
 
-    fun getName(): MutableLiveData<String> {
-        return name
-    }
+    fun getName(): MutableLiveData<String> = name
 
-    fun getScore(): MutableLiveData<String> {
-        return score
-    }
+    fun getScore(): MutableLiveData<String> = score
 
-    fun getDailyRate(): MutableLiveData<String> {
-        return dailyRate
-    }
+    fun getDailyRate(): MutableLiveData<String> = dailyRate
 
-    fun getDiscount(): MutableLiveData<String> {
-        return discount
-    }
+    fun getDiscount(): MutableLiveData<String> = discount
 
-    fun getWifi(): MutableLiveData<String> {
-        return wifi
-    }
+    fun getWifi(): MutableLiveData<String> = wifi
 
-    fun getBreakFast(): MutableLiveData<String> {
-        return breakFast
-    }
+    fun getBreakFast(): MutableLiveData<String> = breakFast
 
-    fun getImageUrl(): MutableLiveData<String> {
-        return imageUrl
-    }
-
-    fun showDetail() {
-        clickEvent.call()
-    }
-
+    fun getImageUrl(): MutableLiveData<String> = imageUrl
 
 }

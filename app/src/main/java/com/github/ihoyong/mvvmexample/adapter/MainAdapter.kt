@@ -25,6 +25,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MainViewHolder).bind(mItem[position])
+
     }
 
     fun addItems(items: MutableList<AgodaItem>) {
