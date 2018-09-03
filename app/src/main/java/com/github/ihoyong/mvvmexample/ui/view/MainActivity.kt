@@ -1,6 +1,8 @@
 package com.github.ihoyong.mvvmexample.ui.view
 
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ihoyong.mvvmexample.R
@@ -27,6 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModelFactory = MainViewModelFactory(repository, ResourceProviderImpl(this))
 
         val mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+
+        mainViewModel.error.observe(this, Observer { value ->
+            if (value != 0) Toast.makeText(this, "잠시 후 다시 시도하세요.", Toast.LENGTH_SHORT).show()
+        })
 
         viewDataBinding.mainViewModel = mainViewModel
         viewDataBinding.setLifecycleOwner(this)
