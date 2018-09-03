@@ -17,6 +17,8 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
     private val dailyRate = MutableLiveData<String>()
     private val disCount = MutableLiveData<String>()
     private val progressBar = MutableLiveData<Int>()
+    private val breakFast = MutableLiveData<String>()
+    private val wifi = MutableLiveData<String>()
 
     init {
         getHotelData()
@@ -32,6 +34,10 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
 
     fun getProgressBar(): MutableLiveData<Int> = progressBar
 
+    fun getBreakFast(): MutableLiveData<String> = breakFast
+
+    fun getWifi(): MutableLiveData<String> = wifi
+
     private fun getHotelData() = addDisposable(repository.getHotel(resourceProvider.getString(R.string.auth), getAgodaRequest())
             .observeOn(AndroidSchedulers.mainThread())
             .map { it -> it[0] }
@@ -45,6 +51,8 @@ class DetailViewModel(private val repository: DetailRepository, private val reso
         title.value = item.name
         dailyRate.value = StringUtils.convertDailyRate(item.dailyRate)
         disCount.value = StringUtils.convertDiscount(item.discountPrecent)
+        breakFast.value = StringUtils.convertBreakFast(item.breakfast)
+        wifi.value = StringUtils.convertWifi(item.wifi)
         progressBar.value = View.GONE
     }
 
