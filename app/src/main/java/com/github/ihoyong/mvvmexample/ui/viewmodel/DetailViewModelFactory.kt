@@ -6,8 +6,11 @@ import com.github.ihoyong.mvvmexample.domain.repository.DetailRepository
 import com.github.ihoyong.mvvmexample.utils.ResourceProvider
 
 @Suppress("UNCHECKED_CAST")
-class DetailViewModelFactory(private val respository: DetailRepository, private val resourceProvider: ResourceProvider) : ViewModelProvider.Factory {
+class DetailViewModelFactory(private val respository: DetailRepository,
+                             private val resourceProvider: ResourceProvider,
+                             private val hotelId: Int?)
+    : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return DetailViewModel(respository, resourceProvider) as T
+        return DetailViewModel(respository, resourceProvider, hotelId) as T
     }
 }
