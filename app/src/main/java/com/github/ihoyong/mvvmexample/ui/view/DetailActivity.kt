@@ -12,6 +12,7 @@ import com.github.ihoyong.mvvmexample.network.Api
 import com.github.ihoyong.mvvmexample.utils.ResourceProviderImpl
 import com.github.ihoyong.mvvmexample.ui.viewmodel.DetailViewModel
 import com.github.ihoyong.mvvmexample.ui.viewmodel.DetailViewModelFactory
+import com.github.ihoyong.mvvmexample.utils.extension.viewModelProvider
 
 class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
@@ -30,12 +31,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
         viewModelFactory = DetailViewModelFactory(repository, resourceProvider, getHotelId)
 
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
+        val detailViewModel: DetailViewModel = viewModelProvider(viewModelFactory)
 
-        viewModel.error.observe(this, Observer { value ->
+        detailViewModel.error.observe(this, Observer { value ->
             if (value == 0) Toast.makeText(this, "정보를 불러올 수 없습니다. 다시 시도하세요.", Toast.LENGTH_SHORT).show()
         })
-        viewDataBinding.viewModel = viewModel
+        viewDataBinding.viewModel = detailViewModel
         viewDataBinding.setLifecycleOwner(this)
     }
 }

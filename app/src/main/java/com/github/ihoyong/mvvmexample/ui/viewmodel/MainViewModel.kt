@@ -1,6 +1,5 @@
 package com.github.ihoyong.mvvmexample.ui.viewmodel
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,10 +7,8 @@ import com.github.ihoyong.mvvmexample.R
 import com.github.ihoyong.mvvmexample.adapter.MainAdapter
 import com.github.ihoyong.mvvmexample.domain.model.*
 import com.github.ihoyong.mvvmexample.domain.repository.Repository
-import com.github.ihoyong.mvvmexample.ui.view.DetailActivity
 import com.github.ihoyong.mvvmexample.utils.ResourceProvider
 import com.github.ihoyong.mvvmexample.utils.SingleLiveEvent
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 
 class MainViewModel(private val repository: Repository, private val resourceProvider: ResourceProvider) : BaseViewModel() {

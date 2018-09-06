@@ -39,8 +39,11 @@
             android:textColor="@color/textColor"
             android:textSize="15sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detail_iv_imageUrl" />
+            app:layout_constraintTop_toBottomOf="@id/detail_iv_imageUrl"
+            app:visible="@{viewModel.titleLayer}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/detail_tv_title"
@@ -91,8 +94,11 @@
             android:textColor="@color/textColor"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/detail_tv_dailyRate"
-            app:layout_constraintTop_toBottomOf="@id/detail_tv_dailyRate" />
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_dailyRate"
+            app:visible="@{viewModel.breakFastLayer}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/detail_tv_breakFast"
@@ -116,9 +122,12 @@
             android:textColor="@color/textColor"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/detail_tv_breakFast"
             app:layout_constraintStart_toEndOf="@id/detail_tv_breakFast"
-            app:layout_constraintTop_toTopOf="@id/detail_tv_breakFast" />
+            app:layout_constraintTop_toTopOf="@id/detail_tv_breakFast"
+            app:visible="@{viewModel.wifiLayer}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/detail_tv_wifi"

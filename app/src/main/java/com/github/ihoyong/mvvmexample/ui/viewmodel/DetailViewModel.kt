@@ -23,6 +23,11 @@ class DetailViewModel(private val repository: DetailRepository,
     private val progressBar = MutableLiveData<Int>()
     private val breakFast = MutableLiveData<String>()
     private val wifi = MutableLiveData<String>()
+
+    private val titleLayer = MutableLiveData<Int>()
+    private val breakFastLayer = MutableLiveData<Int>()
+    private val wifiLayer = MutableLiveData<Int>()
+
     private val _error = SingleLiveEvent<Int>()
 
     val error: LiveData<Int> get() = _error
@@ -45,6 +50,12 @@ class DetailViewModel(private val repository: DetailRepository,
 
     fun getWifi(): MutableLiveData<String> = wifi
 
+    // if progress gone visible text
+    fun getTitleLayer(): MutableLiveData<Int> = titleLayer
+
+    fun getBreakFastLayer(): MutableLiveData<Int> = breakFastLayer
+    fun getWifiLayer(): MutableLiveData<Int> = wifiLayer
+
     private fun getHotelData() = addDisposable(repository.getHotel(resourceProvider.getString(R.string.auth), getAgodaRequest())
             .observeOn(AndroidSchedulers.mainThread())
             .map { it -> it[0] }
@@ -61,6 +72,9 @@ class DetailViewModel(private val repository: DetailRepository,
         breakFast.value = StringUtils.convertBreakFast(item.breakfast)
         wifi.value = StringUtils.convertWifi(item.wifi)
         progressBar.value = View.GONE
+        titleLayer.value = View.VISIBLE
+        breakFastLayer.value = View.VISIBLE
+        wifiLayer.value = View.VISIBLE
     }
 
     private fun errorUI() {
