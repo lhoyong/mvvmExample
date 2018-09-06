@@ -36,6 +36,11 @@ fun setMutableText(view: TextView, text: MutableLiveData<String>?) {
     }
 }
 
+/*
+    Activity -> adapter 으로 lifecycleOwner 전달
+    holder 으로 lifecycleOwner / eventListener 전달해서 클릭 구현하는거로 변환
+    Google IO 2018 Schedule Day Fragment / Adapter 코드 참고
+    */
 @BindingAdapter("mainItemClick")
 fun setMainItemClick(view: View, hotelId: LiveData<Int>) {
 
